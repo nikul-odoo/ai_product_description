@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_inherit_ai_product" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.ai.product</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//block[@name='companies_setting_container']" position="after">
+                <block title="AI Product Description" name="ai_product_description_setting_container">
+                    <setting id="ai_provider_setting" string="AI Provider" help="Select the AI provider to generate descriptions.">
+                        <field name="ai_provider"/>
+                    </setting>
+                    
+                    <setting id="openai_config_setting" string="OpenAI Configuration" invisible="ai_provider != 'openai'">
+                        <field name="openai_api_key" password="True" placeholder="sk-..."/>
+                        <field name="openai_model"/>
+                    </setting>
+                    
+                    <setting id="gemini_config_setting" string="Gemini Configuration" invisible="ai_provider != 'gemini'">
+                        <field name="gemini_api_key" password="True"/>
+                        <field name="gemini_model"/>
+                    </setting>
+                    
+                    <setting id="groq_config_setting" string="Groq Configuration" invisible="ai_provider != 'groq'">
+                        <field name="groq_api_key" password="True"/>
+                        <field name="groq_model"/>
+                    </setting>
+                    
+                    <setting id="claude_config_setting" string="Claude Configuration" invisible="ai_provider != 'claude'">
+                        <field name="claude_api_key" password="True"/>
+                        <field name="claude_model"/>
+                    </setting>
+                    
+                    <setting id="ai_max_tokens_setting" string="Max Tokens" help="Maximum number of tokens for the generated description.">
+                        <field name="max_tokens"/>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>

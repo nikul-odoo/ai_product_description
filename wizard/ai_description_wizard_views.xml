@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_ai_description_wizard_form" model="ir.ui.view">
+        <field name="name">ai.description.wizard.form</field>
+        <field name="model">ai.description.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Generate AI Description">
+                <sheet>
+                    <group>
+                        <field name="product_tmpl_id" invisible="1"/>
+                        <field name="product_name"/>
+                        <field name="ai_provider"/>
+                        <field name="keywords"/>
+                        <field name="tone"/>
+                        <field name="target_field"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_generate_and_apply" type="object" string="Generate &amp; Apply" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
